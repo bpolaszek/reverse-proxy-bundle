@@ -48,8 +48,8 @@ class DefaultController extends Controller
         HttpFoundationFactory $httpFoundationFactory,
         ClientInterface $guzzle,
         EventDispatcherInterface $eventDispatcher
-    )
-    {
+    ) {
+    
         $this->psr7Factory = $psr7Factory;
         $this->httpFoundationFactory = $httpFoundationFactory;
         $this->guzzle = $guzzle;
@@ -108,5 +108,4 @@ class DefaultController extends Controller
         $sfResponse = $this->httpFoundationFactory->createResponse($event->getResponse());
         return $sfResponse;
     }
-
 }
