@@ -1,0 +1,6 @@
+catch_all:
+    path:     /{catchall}
+    defaults:
+        _controller: BenTools\ReverseProxyBundle\Controller\DefaultController
+    requirements:
+        catchall: ".+"

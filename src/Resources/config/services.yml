@@ -1,0 +1,19 @@
+parameters:
+    guzzle.silent.config:  { http_errors: false }
+
+services:
+
+    guzzle.silent:
+        class: GuzzleHttp\Client
+        arguments:
+            - '%guzzle.silent.config%'
+
+    BenTools\ReverseProxyBundle\Controller\DefaultController:
+        class: BenTools\ReverseProxyBundle\Controller\DefaultController
+        arguments:
+            - '@sensio_framework_extra.psr7.http_message_factory'
+            - '@sensio_framework_extra.psr7.http_foundation_factory'
+            - '@guzzle.silent'
+            - '@event_dispatcher'
+        calls:
+            - [setContainer, ['@service_container']]
