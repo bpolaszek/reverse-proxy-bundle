@@ -78,7 +78,7 @@ class DefaultController extends Controller
             $psr7Request = $psr7Request->withoutHeader($key);
         }
 
-        $uri = $psr7Request->getUri()->withHost($customHeaders->get('X-Reverse-Proxy-Host'));
+        $uri = $psr7Request->getUri()->withHost($customHeaders->get('X-Reverse-Proxy-Host'))->withPath($sfRequest->attributes->get('path'));
 
         if ($customHeaders->has('X-Reverse-Proxy-Scheme')) {
             $uri = $uri->withScheme($customHeaders->get('X-Reverse-Proxy-Scheme', $uri->getScheme()));
